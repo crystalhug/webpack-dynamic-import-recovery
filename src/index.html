@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      window.addEventListener(
+        "error",
+        (e) => {
+          const target = e.target;
+          if (target.nodeType === 1) {
+            const newNode = document.createElement("script");
+            newNode.src = target.src.substring(0, target.src.length - 3);
+            target.parentNode.replaceChild(newNode, target);
+          }
+        },
+        true
+      );
+    </script>
+    <script src="http://localhost:3000/source/aerr"></script>
+  </body>
+</html>

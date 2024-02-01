@@ -1,0 +1,28 @@
+{
+  "targets": {
+    "edge": "17",
+    "firefox": "60",
+    "chrome": "67",
+    "safari": "11.1"
+  },
+  "presets": [
+    ["@babel/preset-env", { "modules": false }],
+    // 添加 preset-react
+    [
+      "@babel/preset-react",
+      {
+        "runtime": "automatic" // 设置为 "automatic" 来启用 jsx-runtime
+      }
+    ]
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "regenerator": false, // 通过 preset-env 已经使用了全局的 regeneratorRuntime, 不再需要 transform-runtime 提供的 不污染全局的 regeneratorRuntime
+        "useESModules": true // 使用 es modules helpers, 减少 commonJS 语法代码
+      }
+    ]
+  ]
+  // "plugins": ["./@babel-reversename.js", "./@babel-sort.js"]  // 测试自定义 plugin
+}

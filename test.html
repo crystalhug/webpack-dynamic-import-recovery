@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>实现解构</title>
+    <style>
+    </style>
+  </head>
+  <body>
+    <script>
+      const transFn = (arr, formatStr) => {
+        // 1. formatStr 解析为数组，且变量转换为字符串为一个变量
+        const _uniqueKey = formatStr; // 避免和 formatStr 中的变量名重复
+        let formatStr2Arr;
+        const obj = {};
+        // 代理 obj，只开放允许访问的两个变量 & 替换 formatStr 中的变量为字符串
+        const proxtObj = new Proxy(obj, {
+          has(target, key) {
+            if (key === "formatStr2Arr" || key === "_uniqueKey") return false;
+            return true;
+          },
+          get(target, key) {
+            if (key === "eval") return window.eval;
+            return key;
+          },
+        });
+
+        with (proxtObj) {
+          formatStr2Arr = eval(_uniqueKey);
+        }
+
+        const traverse = (formatArr, targetArr) => {
+          formatArr.forEach((item, index) => {
+            if (Array.isArray(item)) {
+              traverse(item, targetArr[index]);
+            } else {
+              obj[item] = targetArr[index];
+            }
+          });
+        };
+        traverse(formatStr2Arr, arr);
+        return obj;
+      };
+
+      const arr = [1, [2, 3, 3], 4];
+      const str = "[, [,b, e], c]";
+      const res = transFn(arr, str);
+      console.log("res", res);
+    </script>
+  </body>
+</html>

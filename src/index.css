@@ -1,0 +1,13 @@
+div {
+    /* 测试 cssnano 是否可以合并 + 去注释 */
+    font-size: 12px;
+    color: aqua;
+    /* background-image: url('../assets/img/111.png'); */
+}
+
+p {
+    font-size: 12px;
+    color: aqua;
+    /* background-image: url('../assets/img/222.png'); */
+}
+
