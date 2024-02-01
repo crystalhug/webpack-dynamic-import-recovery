@@ -11,7 +11,7 @@
     [
       "@babel/preset-react",
       {
-        "runtime": "automatic" // 设置为 "automatic" 来启用 jsx-runtime
+        "runtime": "automatic"
       }
     ]
   ],
