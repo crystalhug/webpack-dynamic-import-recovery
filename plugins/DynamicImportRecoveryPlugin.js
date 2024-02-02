@@ -1,11 +1,7 @@
 const { Template, RuntimeGlobals } = require("webpack");
 const JsonpChunkLoadingRuntimeModule = require("webpack/lib/web/JsonpChunkLoadingRuntimeModule");
 
-/**
- * TODO: remove completely once https://github.com/webpack/webpack/pull/11535 lands in webpack
- * ref: https://github.com/gregberge/loadable-components/issues/636
- */
-module.exports = class RuntimeLoadDeferredChunksPlugin {
+module.exports = class DynamicImportRecoveryPlugin {
   apply(compiler) {
     compiler.hooks.compilation.tap(
       "RuntimeLoadDeferredChunksPlugin",

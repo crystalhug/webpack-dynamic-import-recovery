@@ -3,8 +3,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const { WYWinJSDebugPlugin } = require("@wyw-in-js/webpack-loader");
 const dev = process.env.NODE_ENV !== "production";
 const HTMLPlugin = require("html-webpack-plugin");
-const DynamicImportSourcePlugin = require("./plugins/dynamicImport");
-const DemoPlugin = require("./plugins/demo");
+const DynamicImportRecoveryPlugin = require("./plugins/DynamicImportRecoveryPlugin");
+const DemoPlugin = require("./plugins/DemoPlugin");
 const { publicPath } = require("webpack/lib/RuntimeGlobals");
 
 module.exports = {
@@ -87,6 +87,6 @@ module.exports = {
       filename: "[name].css",
     }),
     // new DemoPlugin(),
-    new DynamicImportSourcePlugin({ desc: "DynamicImportSourcePlugin" }),
+    new DynamicImportRecoveryPlugin({ desc: "DynamicImportRecoveryPlugin" }),
   ],
 };
