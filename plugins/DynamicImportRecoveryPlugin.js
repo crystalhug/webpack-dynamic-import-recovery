@@ -96,7 +96,6 @@ module.exports = class DynamicImportRecoveryPlugin {
           "RuntimeLoadDeferredChunksPlugin",
           (module, chunk) => {
             if (module instanceof JsonpChunkLoadingRuntimeModule) {
-              // Intercepting the JsonpChunkLoadingRuntimeModule so that we can change its output
               const origGenerate = module.generate.bind(module);
 
               module.generate = () => {
