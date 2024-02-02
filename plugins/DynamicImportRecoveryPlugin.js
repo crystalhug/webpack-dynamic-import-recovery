@@ -4,7 +4,7 @@ const JsonpChunkLoadingRuntimeModule = require("webpack/lib/web/JsonpChunkLoadin
 module.exports = class DynamicImportRecoveryPlugin {
   apply(compiler) {
     compiler.hooks.compilation.tap(
-      "RuntimeLoadDeferredChunksPlugin",
+      "DynamicImportRecoveryPlugin",
       (compilation) => {
         function generate() {
           const { runtimeTemplate } = compilation;

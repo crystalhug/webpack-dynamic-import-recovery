@@ -3,10 +3,11 @@ import React, { useInsertionEffect, lazy } from "react";
 import store from "./store.js";
 import { Provider } from "react-redux";
 import { Suspense } from "react";
+import Counter from './features/counter/counter.jsx';
 
-const Counter = lazy(() =>
-  import(/* webpackChunkName: "lazy_chunk" */ "./features/counter/counter.jsx")
-);
+// const Counter = lazy(() =>
+//   import(/* webpackChunkName: "lazy_chunk" */ "./features/counter/counter.jsx")
+// );
 
 if (process.env.NODE_ENV !== "production") {
   console.log("Looks like we are in development mode!");

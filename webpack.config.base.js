@@ -10,7 +10,7 @@ const { publicPath } = require("webpack/lib/RuntimeGlobals");
 module.exports = {
   entry: "./src/index.jsx",
   output: {
-    path: path.resolve(__dirname, "output"),
+    path: path.resolve(__dirname, "dist"),
     filename: "[name].bundle.js",
   },
   devtool: "source-map",
