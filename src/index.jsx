@@ -16,7 +16,8 @@ if (process.env.NODE_ENV !== "production") {
 function Index() {
   useInsertionEffect(() => {
     // css-in-js 插入时机，避免样式闪烁，因为此时处于 dom 未更新
-    console.log("before mutaion 阶段");
+    console.log("before mutaion 阶段 -- new code from myfeature");
+    console.log("before mutaion 阶段 -- new - 2 code from myfeature");
   }, []);
 
   return (
